@@ -27,6 +27,12 @@ odoo.define('kot_module.DemoButton', function(require) {
         return this.order ? this.order.get_orderlines() : [];
     }
    	onClick() {
+   	    Gui.showPopup("ConfirmPopup", {
+            title: this.env._t('Payment Screen Custom Button Clicked'),
+            body: this.env._t('Welcome to OWL'),
+        });
+
+
 //   	    console.log("====================",orderlineArray)
 //   	    const customer = this.env.pos.get_order().get_client();
 //            const searchDetails = customer ? { fieldName: 'CUSTOMER', searchTerm: customer.name } : {};
