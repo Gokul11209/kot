@@ -1,21 +1,24 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "kot_module",
+    'name': "POS KOT Current Order Print",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        KOT is an abbreviation for Kitchen Order Tickets. 
+        It is a note which is forwarded to the kitchen, billing division, 
+        and one copy is retained in the system for future reference.
+         The KOT application primarily contains details related to the table number, 
+         items ordered, and their quantity.""",
 
     'description': """
-        Long description of module's purpose
+        
+    Food orders from different ordering platforms are accepted directly on one POS system,
+    and a ticket (KOT) is generated immediately in the kitchen. 
+    This ensures that any orders aren't missed or delayed and minimizes discrepancies.
     """,
 
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'author': "Appscomp",
+    'website': "http://www.appscomp.com",
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
     'category': 'Uncategorized',
     'version': '0.1',
 
@@ -26,7 +29,6 @@
             'kot_module/static/src/js/kot_btn_ info.js',
             'kot_module/static/src/js/Kot_order.js',
         ],
-
         'web.assets_backend': [
             'kot_module/static/src/js/kot.js',
         ],
@@ -38,16 +40,5 @@
         ],
 
     },
-
-    # always loaded
-    'data': [
-        # 'security/ir.model.access.csv',
-        # 'views/views.xml',
-        # 'views/templates.xml',
-    ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ]
 
 }
