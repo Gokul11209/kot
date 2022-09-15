@@ -22,17 +22,19 @@
     # any module necessary for this one to work correctly
     'depends': ['base', 'point_of_sale'],
     'assets': {
-        'kot_module.assets': [
-            'kot_module/static/src/js/kot_popup.js',
+        'point_of_sale.assets': [
+            'kot_module/static/src/js/kot_btn_ info.js',
+            'kot_module/static/src/js/Kot_order.js',
         ],
+
         'web.assets_backend': [
             'kot_module/static/src/js/kot.js',
-            # 'addons/account/static/src/css/account.css',
         ],
         'web.assets_qweb': [
+            'kot_module/static/src/views/kot_screen.xml',
             'kot_module/static/src/views/view.xml',
-            'kot_module/static/src/views/kot_template.xml',
-            'kot_module/static/src/views/kot_template.xml'
+            'kot_module/static/src/views/kot_order.xml',
+
         ],
 
     },
