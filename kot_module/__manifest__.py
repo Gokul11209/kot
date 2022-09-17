@@ -19,6 +19,7 @@
     'author': "Appscomp",
     'website': "http://www.appscomp.com",
 
+    
     'category': 'Uncategorized',
     'version': '0.1',
 
@@ -29,6 +30,7 @@
             'kot_module/static/src/js/kot_btn_ info.js',
             'kot_module/static/src/js/Kot_order.js',
         ],
+
         'web.assets_backend': [
             'kot_module/static/src/js/kot.js',
         ],
@@ -40,5 +42,7 @@
         ],
 
     },
+
+    
 
 }

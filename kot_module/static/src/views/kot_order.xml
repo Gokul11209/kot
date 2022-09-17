@@ -58,12 +58,7 @@
             <br/>
             <div class="pos-receipt-order-data">
                 <div><t t-esc="receipt.name" /></div>
-                <t t-if="receipt.date.localestring">
-                    <div><t t-esc="receipt.date.localestring" /></div>
-                </t>
-                <t t-else="">
-                    <div><t t-esc="receipt.date.validation_date" /></div>
-                </t>
+                <div><t t-esc="receipt.date.localestring"/></div>
             </div>
         </div>
     </t>
@@ -106,7 +101,7 @@
 <!--                    <t t-esc="env.pos.format_currency_no_symbol(line.price_display_one)"/>-->
                     <span class="price_display pos-receipt-right-align">
                         <t t-esc="Math.round(line.quantity * Math.pow(10, env.pos.dp['Product Unit of Measure'])) / Math.pow(10, env.pos.dp['Product Unit of Measure'])"/>
-                        <t t-if="!line.is_in_unit" t-esc="line.unit_name"/>  - QTY
+                        <span>-</span><t t-esc="line.unit_name"/>
                     </span>
                 </div>
             </t>
