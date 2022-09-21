@@ -17,6 +17,11 @@
                 <div>KOT ORDER</div>
             </h4>
 
+            <h5 class="pos-receipt-center-align">
+                <div class="cashier">
+                    <div>Waiter by <t t-esc="receipt.cashier"/></div>
+                </div>
+            </h5>
             <br/>
 
             <!-- Orderlines -->
@@ -83,25 +88,26 @@
                         <t t-esc="env.pos.format_currency_no_symbol(line.price)"/>
                     </div>
                 </t>
-<!--                <t t-elif="line.discount !== 0">-->
-<!--                    <div class="pos-receipt-left-padding">-->
-<!--                        <t t-esc="Math.round(line.quantity * Math.pow(10, env.pos.dp['Product Unit of Measure'])) / Math.pow(10, env.pos.dp['Product Unit of Measure'])"/>-->
-<!--                        <t t-if="!line.is_in_unit" t-esc="line.unit_name"/>-->
-<!--                    </div>-->
-<!--                </t>-->
-<!--                <t t-if="line.discount !== 0">-->
-<!--                    <div class="pos-receipt-left-padding">-->
-<!--                        Discount: <t t-esc="line.discount"/>%-->
-<!--                    </div>-->
-<!--                </t>-->
+                <!--                <t t-elif="line.discount !== 0">-->
+                <!--                    <div class="pos-receipt-left-padding">-->
+                <!--                        <t t-esc="Math.round(line.quantity * Math.pow(10, env.pos.dp['Product Unit of Measure'])) / Math.pow(10, env.pos.dp['Product Unit of Measure'])"/>-->
+                <!--                        <t t-if="!line.is_in_unit" t-esc="line.unit_name"/>-->
+                <!--                    </div>-->
+                <!--                </t>-->
+                <!--                <t t-if="line.discount !== 0">-->
+                <!--                    <div class="pos-receipt-left-padding">-->
+                <!--                        Discount: <t t-esc="line.discount"/>%-->
+                <!--                    </div>-->
+                <!--                </t>-->
                 <div class="pos-receipt-left-padding">
 <!--                    <t t-esc="Math.round(line.quantity * Math.pow(10, env.pos.dp['Product Unit of Measure'])) / Math.pow(10, env.pos.dp['Product Unit of Measure'])"/>-->
-<!--                    <t t-if="!line.is_in_unit" t-esc="line.unit_name"/>-->
-<!--                    x-->
-<!--                    <t t-esc="env.pos.format_currency_no_symbol(line.price_display_one)"/>-->
+                    <!--                    <t t-if="!line.is_in_unit" t-esc="line.unit_name"/>-->
+                    <!--                    x-->
+                    <!--                    <t t-esc="env.pos.format_currency_no_symbol(line.price_display_one)"/>-->
                     <span class="price_display pos-receipt-right-align">
                         <t t-esc="Math.round(line.quantity * Math.pow(10, env.pos.dp['Product Unit of Measure'])) / Math.pow(10, env.pos.dp['Product Unit of Measure'])"/>
-                        <span>-</span><t t-esc="line.unit_name"/>
+                        <span>-</span>
+                        <t t-esc="line.unit_name"/>
                     </span>
                 </div>
             </t>
@@ -111,7 +117,7 @@
                     <t t-esc="line.customer_note"/>
                 </div>
             </t>
-            <t t-else="">
+                <t t-else="">
                 <div class="pos-receipt-left-padding pos-receipt-customer-note">
                    <span>Normal</span>
                 </div>
