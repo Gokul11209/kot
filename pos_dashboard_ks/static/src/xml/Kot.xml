@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="Kot_template">'
+        <h2>POS ORDER</h2>
+        <table class="table-bordered" style="width:600px">
+        <thead>
+            <tr>
+            </tr>
+        </thead>
+            <tbody>
+            <t t-foreach="orders" t-as="order">
+                <td class="qty-column">TABLE</td>
+                <td>
+                <t t-esc="order.table"/></td>
+                <td class="name-column">ORDER</td>
+                    <td>
+                    <t t-esc="order.ref_num"/></td>
+            </t>
+            </tbody>
+        </table>
+        <table class="table-bordered" style="width:600px">
+        <thead>
+            <tr>
+                <td class="name-column">Product</td>
+                <td class="qty-column">Qty</td>
+                <td class="qty-column">State</td>
+            </tr>
+        </thead>
+            <tbody>
+            <t t-foreach="orders" t-as="order">
+                <tr>
+                    <td>
+                <t t-esc="order.product"/></td>
+                    <td>
+                <t t-esc="order.qty"/></td>
+                    <td>
+                        <t t-if="order.state == 'pending'">
+                            <span> POS ORDER </span>
+                        </t>
+                        <t t-if="order.state == 'in_progress'">
+                            <span> PREPARING ORDER </span>
+                        </t>
+                        <t t-if="order.state == 'done'">
+                            <span> DELIVERED </span>
+                        </t>
+                    </td>
+                </tr>
+                <br/>
+            </t>
+        </tbody>
+        </table>
+    </t>
+</templates>

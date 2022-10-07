@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.PaymentScreen" t-inherit-mode="extension">
+           <xpath expr="//div[hasclass('payment-controls')]" position="inside">
+               <t t-if="env.pos.config.ni_enable_customer">
+               <div>
+                   <div id="my_button" class="button js_invoice"
+                        t-on-click="NiCustomerDetails">
+                        <i class='fa fa-address-card'/>Customer Details
+                   </div>
+               </div>
+               </t>
+           </xpath>
+    </t>
+
+    <t t-name="NiCustomerDetailsPopupWidget" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-custinfo" style="height:500px;">
+                <p class="title" style="background-color: rgb(110,200,155); color: #fff;">Please Enter Customer/Vehicle Details</p>
+                <div class="logo" style="height:150px; margin:10px;">
+                    <img src="https://i.pinimg.com/564x/de/21/19/de21191534041de72067d8ee264a75a1.jpg"
+                         alt="Car" width="50%" height="100%"/>
+                </div>
+                <div class='custinfo-detail' style="padding:10px;">
+                        <span class='label'>Customer :  </span>
+                    <input class='ni_customer_contact' name='ni_customer_contact'
+                           t-att-value="props.ni_customer_contact" placeholder='Enter Customer Name'
+                           style="width:250px"/>
+                </div>
+                <div class='custinfo-detail' style="padding:10px;">
+                        <span class='label'>Vehicle No :  </span>
+                    <input class='ni_customer_flat' name='ni_customer_flat' t-att-value="props.ni_customer_flat"
+                           placeholder='Enter Vehicle No' style="width:250px"/>
+                    </div>
+                <div class='custinfo-detail' style="pad ding:10px;">
+                        <span class='label'>Mobile No :  </span>
+                    <input class='ni_customer_bldg' name='ni_customer_bldg' t-att-value="props.ni_customer_bldg"
+                           placeholder='Enter Customer Mobile No' style="width:250px"/>
+                    </div>
+                <div class="footer" style="background-color: rgb(110,200,155); color: #fff;position:fixed;bottom:0;">
+                    <div class="button confirm" style="background-color: #0075AC; color: #fff;"
+                         t-on-click="confirm_details_customer">
+                        Confirm
+                    </div>
+                    <div class="button cancel" style="background-color: #0075AC; color: #fff;"
+                         t-on-click="go_back_screen">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

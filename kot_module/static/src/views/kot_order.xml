@@ -19,10 +19,16 @@
 
             <h5 class="pos-receipt-center-align">
                 <div class="cashier">
-                    <div>Waiter by <t t-esc="receipt.cashier"/></div>
+                    <div>Waiter by : <t t-esc="receipt.cashier"/></div>
                 </div>
             </h5>
+            <h3 class="pos-receipt-center-align">
+                <div class="cashier">
+                    <div><t t-esc="receipt.table"/></div>
+                </div>
+            </h3>
             <br/>
+
 
             <!-- Orderlines -->
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ClientCustomer" t-inherit="point_of_sale.ClientListScreen"
+       t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('clientlist-screen')]//section//table[@class='client-list']/thead/tr"
+               position="inside">
+<!--            <th class="client-line-mobile">Mobile</th>-->
+            <th  class="client-line-vech_no">Vehicle No</th>
+        </xpath>
+    </t>
+
+   <!-- <t t-inherit="point_of_sale.ClientListScreen" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('clientlist-screen')]/div/" position="inside">
+              <div class="button back" t-on-click="back">
+                    <i class="fa fa-angle-double-left"/>
+                    Discard Test
+                </div>
+        </xpath>
+    </t>-->
+
+</templates>
