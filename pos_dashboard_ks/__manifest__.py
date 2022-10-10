@@ -33,9 +33,7 @@
     'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.cybrosys.com",
     'data': [
-        "security/ir.model.access.csv",
         'security/pos_kitchengroup.xml',
-        'wizard/dashboard_kot_wizard.xml',
         'views/dashboard_menu_view.xml',
         'views/user_views.xml',
         'views/dashboard_kot_order_report.xml',

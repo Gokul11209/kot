@@ -7,7 +7,7 @@
 				<div class="kitchen_container row">
 					<div class="kitchen_grid pending col-lg-4 col-12">
 						<div class="heading_grid">
-							<h3 class="title">POS Order</h3>
+							<h3 class="title">Pending Order</h3>
 							</div>
                         <div class="pending_content"></div>
 					</div>
@@ -42,16 +42,9 @@
                                 <span>- <t t-esc="order.table_id"/></span>
 							</div>
                             <div class="pos-reference text-left">
-
-								<span class="badge badge-light mb-1 d-block">Guests: <t t-esc="order.customer_count"/></span>
+                                <span class="badge badge-light mb-1 d-block">Guests: <t t-esc="order.customer_count"/></span>
                                 <span class="badge badge-light d-block order_ref"><t t-esc="order.pos_reference" /></span>
-
 							</div>
-                            <!--							<button data-type="print"-->
-                            <!--								class="print_order_line btn btn-success btn_action"-->
-                            <!--								text="Gokul">-->
-                            <!--								<i class="fa fa-print"></i>-->
-                            <!--							</button>-->
 						</div>
 					</div>
                     <div class="content">
@@ -112,7 +105,7 @@
                                             <td class="qty-column"><t t-esc="line.qty" /></td>
                                             <td>
 												<span class="badge badge-success badge_state"
-                                                      t-if="line.dashboard_state == 'done'">Delivered</span>
+                                                      t-if="line.dashboard_state == 'done'">Served</span>
                                                 <span class="badge badge-warning badge_state"
                                                       t-if="line.dashboard_state == 'in_progress'">Preparing</span>
                                                 <span class="badge badge-danger badge_state"
@@ -122,11 +115,11 @@
 												<button data-type="start"
                                                         class="start_order_line btn btn-info btn_action"
                                                         t-on-click="printReceipt"
-                                                        t-if="line.dashboard_state == 'pending'">Start Preparing
+                                                        t-if="line.dashboard_state == 'pending'">Prepare
 													<i class="fa fa-arrow-circle-right fa-lg"></i></button>
                                                 <button data-type="end"
                                                         class="end_order_line btn btn-success btn_action"
-                                                        t-if="line.dashboard_state == 'in_progress'">Delivery
+                                                        t-if="line.dashboard_state == 'in_progress'">Ready to Serve
 													<i class="fa fa-check-square-o"></i>
 												</button>
                                                 <button data-type="print"

@@ -73,45 +73,45 @@ class PosOrderLine(models.Model):
             self.end_date = state['end_date']
 
     def kot_function(self, id):
+        item = []
+        item_2 = []
         print("=======================================================111111111111",id)
         orders = self.env["pos.order.line"].search([('id', '=', id)])
-        items = []
-        items_2 = []
-        n = 0
         for i in orders:
-            print(i.full_product_name, i.qty, i.order_id.pos_reference)
             for j in i.order_id.lines:
-                print('======================================', j.full_product_name, j.qty, i.order_id.table_id.name)
                 values = {
                     'product': j.full_product_name,
                     'qty': j.qty,
-                    # 'table': i.order_id.table_id.name,
-                    # 'ref_num': i.order_id.pos_reference,
-                    'state': j.dashboard_state,
-                    # 'company_id': i.order_id.company_id,
                 }
-                if n == 0:
-                    values["table"] = i.order_id.table_id.name
-                    values["ref_num"] = i.order_id.pos_reference
-                    values["company_id"] = i.order_id.company_id
-                items.append(values)
-                n += 1
-        return items
+                item_2.append(values)
+            item_9 = {
+                'company_name': i.order_id.company_id.name,
+                'table': i.order_id.table_id.name,
+                'date': i.order_id.create_date,
+                'ref_num': i.order_id.pos_reference,
+                'waiter': i.order_id.create_uid.name,
+                'order': item_2,
+            }
+        item.append(item_9)
+        # print('+++++++', item_9['order'])
+        items_2 = []
+        n = 0
+        # for i in orders:
+        #     order = i.order_id
+        #         # print('======================================',
+        #         #       j.full_product_name, j.qty, i.order_id.table_id.name)
+        #     values = {
+        #         'id': order,
+        #     }
+        #         # if n == 0:
+        #         #     values["table"] = i.order_id.table_id.name
+        #         #     values["ref_num"] = i.order_id.pos_reference
+        #         #     values["company_id"] = i.order_id.company_id
+        #         #     values['waiter'] = i.order_id.create_uid.name
+        #         #     values['date'] = i.order_id.create_date
+        #     items.append(values)
+        #         # n += 1
+        #     print('======================================', len(orders))
+        return item
 
-    # def kot_function(self, id):
-    #     print('===========================================')
-    #     # docids = self.env['purchase.order'].search([]).ids
-    #     return self.env.ref('pos_dashboard_ks.dashboard_kot_order_report').report_action(self, data={})
 
-
-# class VehicleReport(models.AbstractModel):
-#     _name = 'report.pos_dashboard_ks.dashboard_kot_template'
-#
-#     @api.model
-#     def _get_report_values(self, docids, data=None):
-#         docs = self.env['pos.order'].browse(docids)
-#         return {
-#             'doc_ids': docids,
-#             'docs': docs,
-#             'data': data,
-#         }

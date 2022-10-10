@@ -83,6 +83,7 @@ odoo.define('pos_dashboard_ks.dashboard_kanban', function (require) {
                     if (self.show_done_orders) {
                         self.getDoneOrders(lines, orders);
                     }
+                    console.log("++++++++++++++++++++++++++++++",orders)
                   
                 });
                
@@ -112,6 +113,7 @@ odoo.define('pos_dashboard_ks.dashboard_kanban', function (require) {
             this.$('.kitchen_grid.prepare .preparing_content').html(QWeb.render('dashboard_orders', {
                 orders: processing_orders
             }));
+            console.log("=====PREPARE========",processing_orders)
 
             this.$('.kitchen_grid.done .done_content').html(QWeb.render('dashboard_orders', {
                 orders: done_orders
@@ -143,8 +145,8 @@ odoo.define('pos_dashboard_ks.dashboard_kanban', function (require) {
                 order.lines = lines.filter((line) => line.order_id[0] === order.id);
             });
             orders = orders.filter((order) => order.lines.length > 0);
+            console.log("Prasathhhhhhhhhhhh1111111111hhhhhhhh", orders)
             return orders;
-        console.log("Prasathhhhhhhhhhhh1111111111hhhhhhhh", orders)
         },
 
         _onStartOrEndOrderLine: function (ev) {
@@ -177,18 +179,22 @@ odoo.define('pos_dashboard_ks.dashboard_kanban', function (require) {
         load_kot: function (data) {
             console.log("333333333333333333333333333",data)
             var self = this;
-            this.$el.html(QWeb.render("Kot_template", {orders: data})
-            );
-
-//            if ($('.dashboard_container').length === 0) {
-//                self.$('.kanban_view').html(QWeb.render('dashboard_orders', {}));
-//        }
+            this.$el.html(QWeb.render("Kot_template", {orders: data}));
+            window.print();
+//            history.go(0);
         },
+
         _onPrintOrderLine: function(ev) {
             var self = this;
             ev.stopPropagation();
             var values = {}
             var id = $(ev.currentTarget).parent().data( "id");
+            console.log("============2525252=================",id)
+//            self._rpc({
+//                    model: 'pos.order.line',
+//                    method: 'search_read',
+//                    args: [],
+//                }).then(function(orders) {
             this._rpc({
                 model: 'pos.order.line',
                 method: 'kot_function',
@@ -197,16 +203,6 @@ odoo.define('pos_dashboard_ks.dashboard_kanban', function (require) {
                 console.log("============1111111=================",data)
                 self.load_kot(data);
             });
-//            self.do_action({
-//                        type: "ir.actions.act_window",
-//                        res_model: "kot.screen.wizard",
-//                        views: [[false, "form"]],
-//                        target: "new",
-//                        context:{
-//
-//                        },
-//                    });
-
         },
 
 

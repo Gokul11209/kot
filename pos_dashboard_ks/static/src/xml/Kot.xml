@@ -1,54 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <templates xml:space="preserve">
-    <t t-name="Kot_template">'
-        <h2>POS ORDER</h2>
-        <table class="table-bordered" style="width:600px">
-        <thead>
-            <tr>
-            </tr>
-        </thead>
-            <tbody>
-            <t t-foreach="orders" t-as="order">
-                <td class="qty-column">TABLE</td>
-                <td>
-                <t t-esc="order.table"/></td>
-                <td class="name-column">ORDER</td>
-                    <td>
-                    <t t-esc="order.ref_num"/></td>
-            </t>
-            </tbody>
-        </table>
-        <table class="table-bordered" style="width:600px">
-        <thead>
-            <tr>
-                <td class="name-column">Product</td>
-                <td class="qty-column">Qty</td>
-                <td class="qty-column">State</td>
-            </tr>
-        </thead>
-            <tbody>
+    <t t-name="Kot_template">
+        <table class="table" align="center">
+            <div class="row" style="border:3px solid red;">
+            <div class="col-1">
+            </div>
+                <div class="col-3">
+                <h2> KOT ORDER </h2>
+            </div>
+            </div>
+            <div class="page" align="center">
             <t t-foreach="orders" t-as="order">
                 <tr>
-                    <td>
-                <t t-esc="order.product"/></td>
-                    <td>
-                <t t-esc="order.qty"/></td>
-                    <td>
-                        <t t-if="order.state == 'pending'">
-                            <span> POS ORDER </span>
-                        </t>
-                        <t t-if="order.state == 'in_progress'">
-                            <span> PREPARING ORDER </span>
-                        </t>
-                        <t t-if="order.state == 'done'">
-                            <span> DELIVERED </span>
-                        </t>
-                    </td>
+                    <span t-esc="order.company_name"/>
                 </tr>
                 <br/>
+                <tr>
+                    <span t-esc="order.table"/>
+                </tr>
+                <br/>
+                <tr>
+                    <span t-esc="order.waiter"/>
+                </tr>
+                <table class="table" style="width:300px">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Qty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="order.order" t-as="l">
+                            <tr>
+                                <td>
+                                    <t t-esc="l.product"/>
+                                </td>
+
+                                <td>
+                                    <t t-esc="l.qty"/>
+                                </td>
+                            </tr>
+                        </t>
+                  </tbody>
+                </table>
+
+                <div align="left" class="footer">
+                    <t t-esc="order.ref_num"/>
+                    <br/>
+                    <t t-esc="order.date"/>
+                </div>
             </t>
-        </tbody>
-        </table>
+
+        </div>
+                        </table>
+        <!--        <table class="table-bordered" style="width:600px">-->
+        <!--        <thead>-->
+        <!--            <tr>-->
+        <!--            </tr>-->
+        <!--        </thead>-->
+        <!--            <tbody>-->
+        <!--            <t t-foreach="orders" t-as="order">-->
+        <!--                <t t-esc="order.table"/>-->
+        <!--                <t t-esc="order.ref_num"/>-->
+        <!--                <t t-esc="order.date_order"/>-->
+        <!--&lt;!&ndash;                <td class="qty-column">TABLE</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;                <td>&ndash;&gt;-->
+        <!--&lt;!&ndash;                <t t-esc="order.table"/></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;                <td class="name-column">ORDER</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;                    <td>&ndash;&gt;-->
+        <!--&lt;!&ndash;                    <t t-esc="order.ref_num"/></td>&ndash;&gt;-->
+        <!--            </t>-->
+        <!--            </tbody>-->
+        <!--        </table>-->
+        <!--        <table class="table-bordered" style="width:600px">-->
+        <!--        <thead>-->
+        <!--            <tr>-->
+        <!--                <td class="name-column">Product</td>-->
+        <!--                <td class="qty-column">Qty</td>-->
+        <!--                <td class="qty-column">State</td>-->
+        <!--            </tr>-->
+        <!--        </thead>-->
+        <!--            <tbody>-->
+        <!--            <t t-foreach="orders" t-as="order">-->
+        <!--                <tr>-->
+        <!--                    <td>-->
+        <!--                <t t-esc="order.product"/></td>-->
+        <!--                    <td>-->
+        <!--                <t t-esc="order.id"/></td>-->
+        <!--                    <td>-->
+        <!--                <t t-esc="order.qty"/></td>-->
+        <!--                            <td>-->
+        <!--                                <t t-if="order.state == 'pending'">-->
+        <!--                                    <span> POS ORDER </span>-->
+        <!--                                </t>-->
+        <!--                                <t t-if="order.state == 'in_progress'">-->
+        <!--                                    <span> PREPARING ORDER </span>-->
+        <!--                                </t>-->
+        <!--                                <t t-if="order.state == 'done'">-->
+        <!--                                    <span> DELIVERED </span>-->
+        <!--                                </t>-->
+        <!--                            </td>-->
+        <!--                </tr>-->
+        <!--                <br/>-->
+        <!--            </t>-->
+        <!--        </tbody>-->
+        <!--        </table>-->
     </t>
 </templates>
