@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="point_of_sale.template" xml:space="preserve">
+    <t t-name="kot_in_receipt" t-inherit="point_of_sale.ReceiptScreen" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('pos-receipt-container')]" position="inside">
+<!--            <div>-->
+                <t t-if="env.pos.config.bill_with_kot">
+                    <KotOrderReceipt order="currentOrder" isBill="true" t-ref="order-receipt"/>
+                </t>
+<!--            </div>-->
+        </xpath>
+    </t>
+</templates>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_kot_config" model="ir.ui.view">
+            <field name="name">pos.config.inherit.form</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='iface_orderline_customer_notes']" position="inside">
+                    <br/>
+                    <div class="o_setting_left_pane">
+                        <field name="kot"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="kot"/>
+                        <span class=""></span>
+                        <div class="text-muted">
+                            Kitchen Order Print
+                        </div>
+                    </div>
+                    <div class="o_setting_right_pane"
+                         attrs="{'invisible': [('kot','!=',True)]}">
+                        <span class="o_form_label">Selected KOT Category</span>
+                        <field name="kot_category" widget="many2many_tags" store="1"/>
+                        <div class="text-muted">
+                            If POS Category is selected, only selected category items will display on KOT Print,
+                            if selected "None",by default all the pos category items will display on KOT Print.
+                        </div>
+                    </div>
+                    <div class="o_setting_right_pane"
+                         attrs="{'invisible': [('kot','!=',True)]}">
+                        <span class="o_form_label">Selected KOT Category</span>
+                        <field name="another_kot_categ" widget="many2many_tags" store="1"/>
+                        <div class="text-muted">
+                            If POS Category is selected, only selected category items will display on KOT Print,
+                            if selected "None",by default all the pos category items will display on KOT Print.
+                        </div>
+                    </div>
+
+                    <div class="o_setting_left_pane" attrs="{'invisible': [('kot','!=',True)]}">
+                        <field name="duplicate_receipt"/>
+                    </div>
+                    <div class="o_setting_right_pane" attrs="{'invisible': [('kot','!=',True)]}">
+                        <label for="duplicate_receipt"/>
+                        <span class=""/>
+                        <div class="text-muted">Enable Duplicate Receipt</div>
+                    </div>
+
+                    <div class="o_setting_left_pane" attrs="{'invisible': [('kot','!=',True)]}">
+                        <field name="bill_with_kot"/>
+                    </div>
+                    <div class="o_setting_right_pane" attrs="{'invisible': [('kot','!=',True)]}">
+                        <label for="bill_with_kot"/>
+                        <span class=""></span>
+                        <div class="text-muted">
+                            Receipt with Kitchen Order Print
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
+    
+
